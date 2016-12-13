@@ -20,4 +20,4 @@ EXPOSE 9000
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["php7.0-fpm"]
+CMD ["php"]
