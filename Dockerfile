@@ -18,6 +18,6 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 9000
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/bin/bash"]
 
-CMD ["php"]
+ENTRYPOINT ["/entrypoint.sh"]
