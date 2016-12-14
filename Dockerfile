@@ -12,6 +12,8 @@ listen = 0.0.0.0:9000' /etc/php/7.0/fpm/pool.d/www.conf
 
 RUN sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php/7.0/fpm/pool.d/www.conf
 
+RUN mkdir -p /run/php
+
 ADD ./entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
