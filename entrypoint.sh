@@ -3,4 +3,6 @@
 mkdir -p /var/www/html
 chown -R www-data:www-data /var/www/html
 
-exec /usr/bin/php
+/usr/bin/php
+
+tail -f /dev/null
