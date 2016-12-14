@@ -7,8 +7,20 @@ RUN add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y --
 RUN sed -i '/daemonize /c \
 daemonize = no' /etc/php/7.0/fpm/php-fpm.conf
 
+RUN sed -i '/max_execution_time /c \
+max_execution_time = 900' /etc/php/7.0/fpm/php.ini
+
+RUN sed -i '/upload_max_filesize /c \
+upload_max_filesize = 2048M' /etc/php/7.0/fpm/php.ini
+
+RUN sed -i '/post_max_size /c \
+post_max_size = 2048M' /etc/php/7.0/fpm/php.ini
+
 RUN sed -i '/^listen /c \
 listen = 0.0.0.0:9000' /etc/php/7.0/fpm/pool.d/www.conf
+
+RUN sed -i '/request_terminate_timeout /c \
+request_terminate_timeout = 900' /etc/php/7.0/fpm/pool.d/www.conf
 
 RUN sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php/7.0/fpm/pool.d/www.conf
 
