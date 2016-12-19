@@ -4,6 +4,14 @@ RUN apt-get update && apt-get install -y software-properties-common python-softw
 
 RUN add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y --force-yes php7.0-fpm php7.0-mysql php7.0-curl curl php7.0-zip unzip
 
+RUN apt-get install -y --force-yes php7.0-dev wget
+
+RUN cd /tmp && wget https://github.com/phpredis/phpredis/archive/php7.zip -O phpredis.zip
+
+RUN unzip -o /tmp/phpredis.zip && cd phpredis-php7 && phpize && ./configure && make && sudo make install
+
+RUN ln -s /etc/php/7.0/mods-available/redis.ini /etc/php/7.0/fpm/conf.d/redis.ini
+
 RUN sed -i '/daemonize /c \
 daemonize = no' /etc/php/7.0/fpm/php-fpm.conf
 
