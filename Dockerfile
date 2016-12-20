@@ -10,6 +10,8 @@ RUN cd /tmp && wget https://github.com/phpredis/phpredis/archive/php7.zip -O php
 
 RUN unzip -o /tmp/phpredis.zip && cd phpredis-php7 && phpize && ./configure && make && sudo make install
 
+RUN touch /etc/php/7.0/mods-available/redis.ini && echo extension=redis.so > /etc/php/7.0/mods-available/redis.ini
+
 RUN ln -s /etc/php/7.0/mods-available/redis.ini /etc/php/7.0/fpm/conf.d/redis.ini
 
 RUN sed -i '/daemonize /c \
