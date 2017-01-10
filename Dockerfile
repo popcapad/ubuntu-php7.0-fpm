@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 RUN apt-get update && apt-get install -y software-properties-common python-software-properties
 
-RUN add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y --force-yes php7.0-fpm php7.0-mysql php7.0-curl curl php7.0-zip unzip
+RUN add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y --force-yes php7.0-fpm php7.0-mysql php7.0-curl curl php7.0-zip unzip php7.0-xml
 
 #RUN apt-get install -y --force-yes php7.0-dev wget
 
